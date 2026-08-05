@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>soccentric-vision-system — Open-Source IMX708 Camera Ecosystem</title>
-  <meta name="description" content="Production-grade open-source camera ecosystem for Sony IMX708 — Linux kernel driver, C++ gRPC server, PySide6 GUI, and 10 application-layer projects for computer vision, surveillance, and automation.">
+  <meta name="description" content="Production-grade open-source camera ecosystem for Sony IMX708 — Linux kernel driver, C++ gRPC server, PySide6 GUI, and 11 application-layer projects for computer vision, surveillance, and automation.">
   <meta name="keywords" content="IMX708, camera, Linux kernel driver, gRPC, computer vision, open source, Sony IMX708, V4L2, object detection, NVR, RTSP, WebRTC, stereo vision, face recognition, time-lapse, PTZ, video analytics">
   <meta name="author" content="soccentric-vision-system">
   <meta name="robots" content="index, follow">
@@ -12,7 +12,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="soccentric-vision-system — Open-Source IMX708 Camera Ecosystem">
-  <meta property="og:description" content="14 repositories spanning kernel development, distributed systems, and computer vision for the Sony IMX708 sensor.">
+  <meta property="og:description" content="15 repositories spanning kernel development, distributed systems, and computer vision for the Sony IMX708 sensor.">
   <meta property="og:url" content="https://soccentric-vision-system.github.io/">
   <meta property="og:type" content="organization">
   <meta property="og:site_name" content="soccentric-vision-system">
@@ -45,7 +45,7 @@
     "@type": "Organization",
     "name": "soccentric-vision-system",
     "url": "https://soccentric-vision-system.github.io",
-    "description": "Open-source IMX708 camera ecosystem — kernel driver, gRPC server, GUI, and 10 application-layer projects.",
+    "description": "Open-source IMX708 camera ecosystem — kernel driver, gRPC server, GUI, and 11 application-layer projects.",
     "foundingDate": "2026",
     "numberOfEmployees": 1,
     "knowsAbout": ["Linux Kernel Drivers", "Computer Vision", "gRPC", "Embedded Systems", "Camera Sensors"],
@@ -440,7 +440,7 @@
       <h1>soccentric-<span class="gradient">vision</span>-system</h1>
       <p>
         A production-grade, open-source camera ecosystem for the Sony IMX708 sensor —
-        14 repositories spanning kernel development, distributed systems, and computer vision.
+        15 repositories spanning kernel development, distributed systems, and computer vision.
       </p>
       <div class="hero-actions">
         <a href="#core" class="btn btn-primary">
@@ -486,7 +486,7 @@
         <div class="flagship-card server" role="link" tabindex="0" aria-label="Open imx708-server repository on GitHub" onclick="window.open('https://github.com/soccentric-vision-system/imx708-server','_blank')">
           <div class="card-accent"></div>
           <div class="card-icon" style="background:var(--accent-light)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Server rack icon"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Server rack icon"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="15" width="20" height="8" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg>
           </div>
           <div class="card-tag">gRPC Service</div>
           <h3>imx708-server</h3>
@@ -499,7 +499,7 @@
         <div class="flagship-card gui" role="link" tabindex="0" aria-label="Open imx708-gui repository on GitHub" onclick="window.open('https://github.com/soccentric-vision-system/imx708-gui','_blank')">
           <div class="card-accent"></div>
           <div class="card-icon" style="background:var(--purple-light)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Desktop monitor icon"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Desktop monitor icon"><rect x="2" y="3" width="20" height="15" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
           </div>
           <div class="card-tag">Desktop Application</div>
           <h3>imx708-gui</h3>
@@ -577,6 +577,7 @@
         { id: 'imx708-timelapse', group: 'app', label: 'Timelapse', color: '#c47d1a' },
         { id: 'imx708-ptz', group: 'app', label: 'PTZ', color: '#d63a5a' },
         { id: 'imx708-analytics', group: 'app', label: 'Analytics', color: '#7c4de8' },
+        { id: 'imx708-derm', group: 'app', label: 'Derm', color: '#e34ba9' },
       ];
       // Spread initial positions across full viewport
       nodes.forEach(n => {
@@ -596,6 +597,7 @@
         { source: 'imx708-server', target: 'imx708-timelapse' },
         { source: 'imx708-server', target: 'imx708-ptz' },
         { source: 'imx708-server', target: 'imx708-analytics' },
+        { source: 'imx708-server', target: 'imx708-derm' },
         { source: 'imx708-detect', target: 'imx708-ptz' },
         { source: 'imx708-calibrate', target: 'imx708-stereo' },
       ];
@@ -689,6 +691,7 @@
         { name: 'timelapse', tests: 10, color: '#c47d1a' },
         { name: 'ptz', tests: 14, color: '#d63a5a' },
         { name: 'analytics', tests: 9, color: '#7c4de8' },
+        { name: 'derm', tests: 13, color: '#e34ba9' },
       ];
 
       const margin = { top: 10, right: 10, bottom: 40, left: 10 };
@@ -768,19 +771,21 @@
       { name: 'imx708-timelapse', desc: 'Time-lapse / HDR photography tool. Scheduled capture, exposure bracketing, Debevec HDR merge, deflicker, video assembly.', icon: 'timelapse', color: '#c47d1a', lang: 'Python', tests: '10' },
       { name: 'imx708-ptz', desc: 'Pan/tilt/zoom tracking rig. OpenCV object tracking, PID control loop, PCA9685 servo driver, digital zoom, lost-subject recovery.', icon: 'ptz', color: '#d63a5a', lang: 'Python', tests: '14' },
       { name: 'imx708-analytics', desc: 'Video analytics metrics pipeline. Real-time sharpness, exposure, motion heatmap, activity level. gRPC streaming for GUI consumption.', icon: 'analytics', color: '#7c4de8', lang: 'Python', tests: '9' },
+      { name: 'imx708-derm', desc: 'Medical skin imaging and analysis pipeline. Real-time segmentation, registration, feature extraction, multi-camera fusion for dermatological assessment.', icon: 'derm', color: '#e34ba9', lang: 'Python', tests: '13' },
     ];
 
     const svgIcons = {
       detect: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1010 10"/><path d="M12 12l4-4"/><circle cx="12" cy="12" r="2"/></svg>',
-      nvr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>',
+      nvr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11"/><polygon points="10 8 16 12 10 16 10 8"/></svg>',
       calibrate: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
       streamer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
       scan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 012-2h2"/><path d="M17 3h2a2 2 0 012 2v2"/><path d="M21 17v2a2 2 0 01-2 2h-2"/><path d="M7 21H5a2 2 0 01-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>',
       stereo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-5 4 10 2-5 2 5 2-5h4"/></svg>',
       access: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>',
-      timelapse: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+      timelapse: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11"/><polyline points="12 6 12 12 16 14"/></svg>',
       ptz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>',
-      analytics: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+      analytics: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="11"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="15"/></svg>',
+      derm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 017-7z"/><path d="M9 22h6"/></svg>',
     };
 
     const grid = document.getElementById('app-grid');
