@@ -12,7 +12,6 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg: #f8f9fb;
-      --bg-warm: #f0f2f5;
       --surface: #ffffff;
       --surface-hover: #f3f4f8;
       --border: #e2e5ec;
@@ -22,7 +21,6 @@
       --text-muted: #8b94a8;
       --accent: #3b6fe0;
       --accent-light: rgba(59, 111, 224, 0.08);
-      --accent-glow: rgba(59, 111, 224, 0.04);
       --green: #2b9a4a;
       --green-light: rgba(43, 154, 74, 0.08);
       --orange: #c47d1a;
@@ -51,16 +49,15 @@
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* ── Background Graph ── */
+    /* ── Fullscreen Background Graph ── */
     #bg-graph {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.35;
     }
-    #bg-graph svg { width: 100%; height: 100%; }
+    #bg-graph svg { width: 100%; height: 100%; display: block; }
 
     /* ── Nav ── */
     nav {
@@ -101,7 +98,7 @@
     /* ── Hero ── */
     .hero {
       position: relative; z-index: 1;
-      padding: 140px 0 70px;
+      padding: 140px 0 60px;
       text-align: center;
     }
     .hero-badge {
@@ -111,6 +108,7 @@
       border: 1px solid rgba(59, 111, 224, 0.12);
       font-size: 0.78rem; font-weight: 500; color: var(--accent);
       margin-bottom: 28px;
+      backdrop-filter: blur(4px);
     }
     .hero-badge .dot {
       width: 6px; height: 6px; border-radius: 50%;
@@ -146,6 +144,7 @@
       padding: 10px 24px; border-radius: var(--radius-sm);
       font-size: 0.88rem; font-weight: 600;
       text-decoration: none; transition: all 0.2s;
+      backdrop-filter: blur(4px);
     }
     .hero-actions .btn-primary {
       background: var(--accent); color: #fff;
@@ -153,7 +152,7 @@
     }
     .hero-actions .btn-primary:hover { background: #3461cc; transform: translateY(-1px); }
     .hero-actions .btn-secondary {
-      background: var(--surface); border: 1px solid var(--border);
+      background: rgba(255,255,255,0.85); border: 1px solid var(--border);
       color: var(--text);
     }
     .hero-actions .btn-secondary:hover { border-color: var(--text-muted); background: var(--surface-hover); }
@@ -163,7 +162,7 @@
     .stats-row {
       position: relative; z-index: 1;
       display: flex; justify-content: center; gap: 48px;
-      padding: 32px 0 0;
+      padding: 24px 0 0;
       flex-wrap: wrap;
     }
     .stats-row .stat { text-align: center; }
@@ -200,32 +199,6 @@
       margin-bottom: 40px;
     }
 
-    /* ── Graph Card ── */
-    .graph-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .graph-card .graph-head {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .graph-card .graph-head h3 {
-      font-size: 0.85rem; font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .graph-card .graph-head .hint {
-      font-size: 0.75rem; color: var(--text-muted);
-    }
-    #dep-graph {
-      width: 100%; height: 500px;
-      cursor: grab;
-    }
-    #dep-graph:active { cursor: grabbing; }
-
     /* ── Flagship ── */
     .flagship-grid {
       display: grid;
@@ -233,7 +206,9 @@
       gap: 20px;
     }
     .flagship-card {
-      background: var(--surface);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 28px;
@@ -247,6 +222,7 @@
       border-color: var(--text-muted);
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
+      background: rgba(255,255,255,0.97);
     }
     .flagship-card .card-accent {
       position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -282,10 +258,7 @@
       font-family: var(--font-mono);
       font-size: 0.72rem; color: var(--text-muted);
     }
-    .flagship-card .card-foot .arrow {
-      margin-left: auto;
-      transition: transform 0.2s;
-    }
+    .flagship-card .card-foot .arrow { margin-left: auto; transition: transform 0.2s; }
     .flagship-card .card-foot .arrow svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .flagship-card:hover .card-foot .arrow svg { stroke: var(--accent); }
     .flagship-card:hover .card-foot .arrow { transform: translateX(4px); }
@@ -297,7 +270,9 @@
       gap: 14px;
     }
     .app-card {
-      background: var(--surface);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px;
@@ -307,7 +282,7 @@
     }
     .app-card:hover {
       border-color: var(--text-muted);
-      background: var(--surface-hover);
+      background: rgba(255,255,255,0.97);
       transform: translateY(-1px);
       box-shadow: var(--shadow);
     }
@@ -324,30 +299,19 @@
     .app-card .card-top .tests {
       font-size: 0.7rem; font-weight: 500;
       padding: 2px 8px; border-radius: 4px;
-      background: var(--bg); color: var(--text-muted);
+      background: rgba(248,249,251,0.8);
+      color: var(--text-muted);
       font-family: var(--font-mono);
     }
-    .app-card h4 {
-      font-size: 0.92rem; font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .app-card p {
-      font-size: 0.78rem; color: var(--text-secondary);
-      line-height: 1.55;
-    }
+    .app-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+    .app-card p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; }
     .app-card .card-bottom {
       display: flex; align-items: center; gap: 8px;
       margin-top: 14px; padding-top: 12px;
       border-top: 1px solid var(--border-light);
     }
-    .app-card .card-bottom .lang {
-      font-family: var(--font-mono);
-      font-size: 0.7rem; color: var(--text-muted);
-    }
-    .app-card .card-bottom .arrow {
-      margin-left: auto;
-      transition: transform 0.2s;
-    }
+    .app-card .card-bottom .lang { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+    .app-card .card-bottom .arrow { margin-left: auto; transition: transform 0.2s; }
     .app-card .card-bottom .arrow svg { width: 14px; height: 14px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .app-card:hover .card-bottom .arrow svg { stroke: var(--accent); }
     .app-card:hover .card-bottom .arrow { transform: translateX(3px); }
@@ -359,20 +323,16 @@
       gap: 20px;
     }
     .chart-card {
-      background: var(--surface);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 24px;
       box-shadow: var(--shadow-sm);
     }
-    .chart-card h3 {
-      font-size: 0.88rem; font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .chart-card .chart-desc {
-      font-size: 0.78rem; color: var(--text-muted);
-      margin-bottom: 20px;
-    }
+    .chart-card h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
+    .chart-card .chart-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; }
     .chart-card svg { width: 100%; height: auto; }
 
     /* ── Footer ── */
@@ -380,6 +340,8 @@
       position: relative; z-index: 1;
       border-top: 1px solid var(--border-light);
       padding: 40px 0;
+      background: rgba(248,249,251,0.5);
+      backdrop-filter: blur(8px);
     }
     footer .container {
       display: flex; align-items: center; justify-content: space-between;
@@ -387,10 +349,7 @@
     }
     footer .copy { font-size: 0.82rem; color: var(--text-muted); }
     footer .links { display: flex; gap: 20px; }
-    footer .links a {
-      font-size: 0.82rem; color: var(--text-secondary);
-      text-decoration: none; transition: color 0.2s;
-    }
+    footer .links a { font-size: 0.82rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
     footer .links a:hover { color: var(--text); }
 
     @media (max-width: 900px) {
@@ -400,14 +359,13 @@
     @media (max-width: 640px) {
       .hero { padding: 110px 0 40px; }
       nav .nav-links a:not(.gh-link) { display: none; }
-      #dep-graph { height: 360px; }
       .stats-row { gap: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══ Infinite Background Graph ═══ -->
+  <!-- ═══ Fullscreen Animated Ecosystem Graph ═══ -->
   <div id="bg-graph"></div>
 
   <!-- ═══ Nav ═══ -->
@@ -415,7 +373,6 @@
     <div class="container">
       <a href="#" class="logo">soccentric-<span>vision</span>-system</a>
       <div class="nav-links">
-        <a href="#architecture">Architecture</a>
         <a href="#core">Core</a>
         <a href="#applications">Apps</a>
         <a href="#metrics">Metrics</a>
@@ -437,7 +394,7 @@
         14 repositories spanning kernel development, distributed systems, and computer vision.
       </p>
       <div class="hero-actions">
-        <a href="#architecture" class="btn btn-primary">
+        <a href="#core" class="btn btn-primary">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l5 5-5 5"/></svg>
           Explore Ecosystem
         </a>
@@ -456,22 +413,6 @@
     <div class="stat"><div class="num" style="color:var(--purple)">10</div><div class="label">Applications</div></div>
     <div class="stat"><div class="num" style="color:var(--orange);font-size:1.1rem">C · C++ · Python</div><div class="label">Languages</div></div>
   </div>
-
-  <!-- ═══ Architecture ═══ -->
-  <section class="section" id="architecture">
-    <div class="container">
-      <div class="section-label">Architecture</div>
-      <h2 class="section-title">Ecosystem Dependency Graph</h2>
-      <p class="section-subtitle">Interactive visualization of all 14 projects. Drag nodes to explore. Click to open any repository.</p>
-      <div class="graph-card">
-        <div class="graph-head">
-          <h3><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--text-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8h3l2-5 4 10 2-5h3"/></svg> imx708-ecosystem</h3>
-          <span class="hint">Drag to pan · Scroll to zoom · Click to open</span>
-        </div>
-        <div id="dep-graph"></div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══ Core ═══ -->
   <section class="section" id="core">
@@ -568,101 +509,25 @@
   </footer>
 
   <script>
-    // ── Infinite Background Graph ──
+    // ── Fullscreen Animated Ecosystem Graph ──
     (function() {
       const container = document.getElementById('bg-graph');
       const w = window.innerWidth, h = window.innerHeight;
 
-      const nodes = [];
-      for (let i = 0; i < 40; i++) {
-        nodes.push({
-          x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2,
-          r: Math.random() * 3 + 1.5,
-          color: d3.rgb(59, 111, 224).brighter(Math.random() * 0.5).toString()
-        });
-      }
-
-      const svg = d3.select(container)
-        .append('svg')
-        .attr('width', w)
-        .attr('height', h);
-
-      // Links between nearby nodes
-      const linkData = [];
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180 && Math.random() < 0.15) {
-            linkData.push({ source: i, target: j, dist: dist });
-          }
-        }
-      }
-
-      const links = svg.append('g')
-        .selectAll('line')
-        .data(linkData)
-        .join('line')
-        .attr('stroke', 'rgba(59, 111, 224, 0.08)')
-        .attr('stroke-width', 0.8);
-
-      const circles = svg.append('g')
-        .selectAll('circle')
-        .data(nodes)
-        .join('circle')
-        .attr('r', d => d.r)
-        .attr('fill', d => d.color)
-        .attr('opacity', 0.2);
-
-      function animate() {
-        nodes.forEach(n => {
-          n.x += n.vx;
-          n.y += n.vy;
-          if (n.x < 0) n.x = w;
-          if (n.x > w) n.x = 0;
-          if (n.y < 0) n.y = h;
-          if (n.y > h) n.y = 0;
-        });
-
-        circles.attr('cx', d => d.x).attr('cy', d => d.y);
-        links
-          .attr('x1', d => nodes[d.source].x)
-          .attr('y1', d => nodes[d.source].y)
-          .attr('x2', d => nodes[d.target].x)
-          .attr('y2', d => nodes[d.target].y);
-
-        requestAnimationFrame(animate);
-      }
-      animate();
-
-      window.addEventListener('resize', () => {
-        svg.attr('width', window.innerWidth).attr('height', window.innerHeight);
-      });
-    })();
-
-    // ── Interactive D3 Graph ──
-    (function() {
-      const container = document.getElementById('dep-graph');
-      const width = container.clientWidth;
-      const height = 500;
-
       const nodes = [
-        { id: 'imx708-driver', group: 'core', label: 'Driver', desc: 'Kernel Module', color: '#2b9a4a' },
-        { id: 'imx708-server', group: 'core', label: 'Server', desc: 'gRPC Daemon', color: '#3b6fe0' },
-        { id: 'imx708-gui', group: 'core', label: 'GUI', desc: 'Desktop App', color: '#7c4de8' },
-        { id: 'imx708-detect', group: 'app', label: 'Detect', desc: 'Object Detection', color: '#2b9a4a' },
-        { id: 'imx708-nvr', group: 'app', label: 'NVR', desc: 'Motion Recording', color: '#3b6fe0' },
-        { id: 'imx708-calibrate', group: 'app', label: 'Calibrate', desc: 'Calibration', color: '#c47d1a' },
-        { id: 'imx708-streamer', group: 'app', label: 'Streamer', desc: 'RTSP/WebRTC', color: '#7c4de8' },
-        { id: 'imx708-scan', group: 'app', label: 'Scan', desc: 'Barcode/Doc', color: '#d63a5a' },
-        { id: 'imx708-stereo', group: 'app', label: 'Stereo', desc: 'Depth Vision', color: '#1a8bcc' },
-        { id: 'imx708-access', group: 'app', label: 'Access', desc: 'Face Recognition', color: '#2b9a4a' },
-        { id: 'imx708-timelapse', group: 'app', label: 'Timelapse', desc: 'HDR Photography', color: '#c47d1a' },
-        { id: 'imx708-ptz', group: 'app', label: 'PTZ', desc: 'Tracking Rig', color: '#d63a5a' },
-        { id: 'imx708-analytics', group: 'app', label: 'Analytics', desc: 'Video Metrics', color: '#7c4de8' },
+        { id: 'imx708-driver', group: 'core', label: 'Driver', color: '#2b9a4a' },
+        { id: 'imx708-server', group: 'core', label: 'Server', color: '#3b6fe0' },
+        { id: 'imx708-gui', group: 'core', label: 'GUI', color: '#7c4de8' },
+        { id: 'imx708-detect', group: 'app', label: 'Detect', color: '#2b9a4a' },
+        { id: 'imx708-nvr', group: 'app', label: 'NVR', color: '#3b6fe0' },
+        { id: 'imx708-calibrate', group: 'app', label: 'Calibrate', color: '#c47d1a' },
+        { id: 'imx708-streamer', group: 'app', label: 'Streamer', color: '#7c4de8' },
+        { id: 'imx708-scan', group: 'app', label: 'Scan', color: '#d63a5a' },
+        { id: 'imx708-stereo', group: 'app', label: 'Stereo', color: '#1a8bcc' },
+        { id: 'imx708-access', group: 'app', label: 'Access', color: '#2b9a4a' },
+        { id: 'imx708-timelapse', group: 'app', label: 'Timelapse', color: '#c47d1a' },
+        { id: 'imx708-ptz', group: 'app', label: 'PTZ', color: '#d63a5a' },
+        { id: 'imx708-analytics', group: 'app', label: 'Analytics', color: '#7c4de8' },
       ];
 
       const links = [
@@ -681,63 +546,78 @@
         { source: 'imx708-calibrate', target: 'imx708-stereo' },
       ];
 
-      const svg = d3.select('#dep-graph')
+      const svg = d3.select(container)
         .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .style('cursor', 'grab');
+        .attr('width', w)
+        .attr('height', h);
 
       const defs = svg.append('defs');
-      const glow = defs.append('filter').attr('id', 'g-glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+      const glow = defs.append('filter').attr('id', 'bg-glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
       glow.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
       glow.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).join('feMergeNode').attr('in', d => d);
-      defs.append('marker').attr('id', 'g-arrow').attr('viewBox', '0 -5 10 10').attr('refX', 26).attr('refY', 0).attr('markerWidth', 5).attr('markerHeight', 5).attr('orient', 'auto')
-        .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', 'rgba(59,111,224,0.15)');
-
-      const g = svg.append('g');
-      const zoom = d3.zoom().scaleExtent([0.4, 3]).on('zoom', (e) => g.attr('transform', e.transform));
-      svg.call(zoom);
 
       const sim = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).id(d => d.id).distance(d => d.source.group === 'core' && d.target.group !== 'core' ? 140 : 90))
-        .force('charge', d3.forceManyBody().strength(-250))
-        .force('center', d3.forceCenter(width / 2, height / 2))
-        .force('collision', d3.forceCollide(35));
+        .force('link', d3.forceLink(links).id(d => d.id).distance(160).strength(0.03))
+        .force('charge', d3.forceManyBody().strength(-80))
+        .force('center', d3.forceCenter(w / 2, h / 2))
+        .alphaDecay(0.003)
+        .velocityDecay(0.92);
 
-      const link = g.append('g').selectAll('line').data(links).join('line')
-        .attr('stroke', d => d.source.group === 'core' && d.target.group !== 'core' ? 'rgba(59,111,224,0.12)' : 'rgba(59,111,224,0.06)')
-        .attr('stroke-width', d => d.source.group === 'core' && d.target.group !== 'core' ? 1.5 : 1)
-        .attr('stroke-dasharray', d => d.source.group === 'core' && d.target.group !== 'core' ? '5,5' : null)
-        .attr('marker-end', d => d.source.group === 'core' && d.target.group !== 'core' ? 'url(#g-arrow)' : null);
+      const link = svg.append('g').selectAll('line').data(links).join('line')
+        .attr('stroke', 'rgba(59, 111, 224, 0.06)')
+        .attr('stroke-width', 0.8);
 
-      const node = g.append('g').selectAll('g').data(nodes).join('g')
-        .style('cursor', 'pointer')
-        .call(d3.drag()
-          .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-          .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
-          .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
-        )
-        .on('click', (e, d) => window.open(`https://github.com/soccentric-vision-system/${d.id}`, '_blank'));
+      const node = svg.append('g').selectAll('g').data(nodes).join('g');
 
-      node.filter(d => d.group === 'core').append('circle').attr('r', 28).attr('fill', 'none').attr('stroke', d => d.color).attr('stroke-width', 1).attr('stroke-opacity', 0.12);
-      node.append('circle').attr('r', d => d.group === 'core' ? 20 : 14)
-        .attr('fill', d => d.color).attr('fill-opacity', d => d.group === 'core' ? 0.9 : 0.6)
-        .attr('stroke', d => d.color).attr('stroke-width', d => d.group === 'core' ? 3 : 2).attr('stroke-opacity', 0.25)
-        .attr('filter', d => d.group === 'core' ? 'url(#g-glow)' : null);
+      node.filter(d => d.group === 'core').append('circle').attr('r', 18)
+        .attr('fill', 'none').attr('stroke', d => d.color).attr('stroke-width', 1).attr('stroke-opacity', 0.1);
 
-      node.append('text').text(d => d.label).attr('dy', d => d.group === 'core' ? 32 : 24).attr('text-anchor', 'middle')
-        .attr('fill', '#1a1d24').attr('font-size', d => d.group === 'core' ? 12 : 10).attr('font-weight', 600).attr('font-family', 'DM Sans, sans-serif');
-      node.append('text').text(d => d.desc).attr('dy', d => d.group === 'core' ? 44 : 34).attr('text-anchor', 'middle')
-        .attr('fill', '#8b94a8').attr('font-size', 9).attr('font-weight', 400).attr('font-family', 'DM Sans, sans-serif');
+      node.append('circle').attr('r', d => d.group === 'core' ? 12 : 8)
+        .attr('fill', d => d.color).attr('fill-opacity', d => d.group === 'core' ? 0.25 : 0.12)
+        .attr('stroke', d => d.color).attr('stroke-width', d => d.group === 'core' ? 2 : 1).attr('stroke-opacity', 0.15)
+        .attr('filter', d => d.group === 'core' ? 'url(#bg-glow)' : null);
 
+      node.append('text').text(d => d.label).attr('dy', d => d.group === 'core' ? 22 : 16).attr('text-anchor', 'middle')
+        .attr('fill', 'rgba(26,29,36,0.25)').attr('font-size', d => d.group === 'core' ? 9 : 7).attr('font-weight', 500).attr('font-family', 'DM Sans, sans-serif');
+
+      // Swinging perturbation — periodically nudge the simulation
+      let tick = 0;
       sim.on('tick', () => {
+        tick++;
+        // Every 120 frames, apply a gentle rotational nudge to simulate swinging
+        if (tick % 120 === 0) {
+          const angle = Math.random() * Math.PI * 2;
+          const force = 0.3;
+          nodes.forEach((n, i) => {
+            if (Math.random() < 0.3) {
+              n.vx += Math.cos(angle + i * 0.5) * force;
+              n.vy += Math.sin(angle + i * 0.5) * force;
+            }
+          });
+        }
+        // Keep nodes roughly in view with soft boundaries
+        nodes.forEach(n => {
+          if (n.x < -100) n.vx += 0.1;
+          if (n.x > w + 100) n.vx -= 0.1;
+          if (n.y < -100) n.vy += 0.1;
+          if (n.y > h + 100) n.vy -= 0.1;
+        });
+
         link.attr('x1', d => d.source.x).attr('y1', d => d.source.y).attr('x2', d => d.target.x).attr('y2', d => d.target.y);
         node.attr('transform', d => `translate(${d.x},${d.y})`);
       });
 
-      setTimeout(() => {
-        svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity.translate(width/2, height/2).scale(0.85).translate(-width/2, -height/2));
-      }, 100);
+      // Reheat simulation periodically to keep it swinging
+      setInterval(() => {
+        sim.alpha(0.15).restart();
+      }, 4000);
+
+      window.addEventListener('resize', () => {
+        const nw = window.innerWidth, nh = window.innerHeight;
+        svg.attr('width', nw).attr('height', nh);
+        sim.force('center', d3.forceCenter(nw / 2, nh / 2));
+        sim.alpha(0.1).restart();
+      });
     })();
 
     // ── Test Coverage Chart ──
