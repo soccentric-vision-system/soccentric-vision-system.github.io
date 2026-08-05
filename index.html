@@ -84,7 +84,7 @@
       --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
       --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
-      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     }
     html { scroll-behavior: smooth; }
@@ -633,7 +633,7 @@
         .attr('filter', d => d.group === 'core' ? 'url(#bg-glow)' : null);
 
       node.append('text').text(d => d.label).attr('dy', d => d.group === 'core' ? 28 : 20).attr('text-anchor', 'middle')
-        .attr('fill', 'rgba(26,29,36,0.3)').attr('font-size', d => d.group === 'core' ? 10 : 8).attr('font-weight', 500).attr('font-family', 'DM Sans, sans-serif');
+        .attr('fill', 'rgba(26,29,36,0.3)').attr('font-size', d => d.group === 'core' ? 10 : 8).attr('font-weight', 500).attr('font-family', 'Inter, sans-serif');
 
       // Swinging perturbation
       let tick = 0;
@@ -718,7 +718,7 @@
         .attr('x', d => x(d.name) + x.bandwidth() / 2).attr('y', innerH + 16)
         .attr('text-anchor', 'end').attr('fill', '#8b94a8').attr('font-size', '8px')
         .attr('transform', d => `rotate(-35, ${x(d.name) + x.bandwidth() / 2}, ${innerH + 16})`)
-        .attr('font-family', 'DM Sans, sans-serif');
+        .attr('font-family', 'Inter, sans-serif');
     })();
 
     // ── Language Chart ──
@@ -751,7 +751,7 @@
       data.forEach((d, i) => {
         const row = legend.append('g').attr('transform', `translate(0, ${i * 24})`);
         row.append('rect').attr('width', 10).attr('height', 10).attr('rx', 2).attr('fill', d.color).attr('opacity', 0.75);
-        row.append('text').text(d.lang).attr('x', 18).attr('y', 9).attr('fill', '#1a1d24').attr('font-size', '12px').attr('font-weight', 600).attr('font-family', 'DM Sans, sans-serif');
+        row.append('text').text(d.lang).attr('x', 18).attr('y', 9).attr('fill', '#1a1d24').attr('font-size', '12px').attr('font-weight', 600).attr('font-family', 'Inter, sans-serif');
         row.append('text').text(`${d.pct}%`).attr('x', 18).attr('y', 22).attr('fill', '#8b94a8').attr('font-size', '10px').attr('font-family', 'JetBrains Mono, monospace');
       });
     })();
